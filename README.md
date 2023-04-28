@@ -2,13 +2,13 @@
 
 ## Autores
 
-Daniel - RM348932
+Daniel Udala - RM348932
 
-Sara - RM
+Sara Luize - RM348391
 
-Giancarlo - RM348315
+Giancarlo Lester - RM348315
 
-Vinicius - RM348353
+Vinicius Mesel - RM348353
 
 
 ## Dataset - CVM Fundos
