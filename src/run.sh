@@ -1,14 +1,15 @@
-#!/bin/bash
+# Donload do mês atual
+python src/download_data.py
 
-datadir=`echo $HDFS_CONF_dfs_datanode_data_dir | perl -pe 's#file://##'`
-if [ ! -d $datadir ]; then
-  echo "Datanode data directory not found: $datadir"
-  exit 2
-fi
+# Download completo dos dados
+python src/download_data.py -f
 
-$HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR datanode
-$HADOOP_HOME/bin/hdfs dfs -mkdir /user
-$HADOOP_HOME/bin/hdfs dfs -mkdir /user/root
+docker compose cp files/extract/. namenode:/home/files/
+docker compose cp files/zip/. namenode:/home/bkp/
 
-python3 -m pip install requests
-nohup hdfs datanode
+docker compose exec -it namenode bash
+hdfs dfs -mkdir /fundos
+hdfs dfs -mkdir /fundos_bkp
+
+hdfs dfs -put -f /home/files/*.csv /fundos/
+hdfs dfs -put -f /home/bkp/*.zip /fundos_bkp/
