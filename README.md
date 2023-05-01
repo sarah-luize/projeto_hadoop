@@ -39,15 +39,15 @@ O dataset é disponibilizado em um diretório HTTP no site de dados abertos da C
 A estrutura de diretórios e de dados escolhida para o HDFS é baseada em data do arquivo, seguindo em ano e mês. Então a estrutura de arquivos ficaria:
 
 ```
-2023
+/home/funds/2023
 ├── 01
-│   └── 202301.zip
+│   └── inf_diario_fi_202301.csv
 ├── 02
-│   └── 202302.zip
+│   └── inf_diario_fi_202302.csv
 ├── 03
-│   └── 202303.zip
+│   └── inf_diario_fi_202303.csv
 └── 04
-    └── 202304.zip
+    └── inf_diario_fi_202304.csv
 ```
 
 Essa estrutura foi escolhida para favorecer o uso de arquivos datados e suas atualizações, permitindo com que saibamos o arquivo que foi atualizado e o mês que ele se refere, além de permitir com que compartimentemos os dados por seus meses e anos de competência. 
@@ -80,4 +80,16 @@ python3 /src/download_dataset.py # Rodar diariamente para baixar os dados
 
 ```
 Redigir uma estratégia de backup condizente com os dados. A meu ver (vinicius aqui), devemos ter um backup de arquivos zip, com uma retenção mensal. Não sei como estruturar isso dentro do HDFS, porém deve ser algo simples.
+```
+
+```
+/home/funds_bkp/2023
+├── 01
+│   └── 01_2023.zip
+├── 02
+│   └── 02_2023.zip
+├── 03
+│   └── 03_2023.zip
+└── 04
+    └── 04_2023.zip
 ```
