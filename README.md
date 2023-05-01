@@ -79,9 +79,10 @@ python3 /src/download_dataset.py # Rodar diariamente para baixar os dados
 ### Estratégia de Backup
 
 ```
-Redigir uma estratégia de backup condizente com os dados. A meu ver (vinicius aqui), devemos ter um backup de arquivos zip, com uma retenção mensal. Não sei como estruturar isso dentro do HDFS, porém deve ser algo simples.
+O Backup é realizado diariamente, porem salvando os dados em seu formato bruto `.zip` para ser possivel recuperar o arquivo no momento em que isso for necessário e ao mesmo tempo por não ser um arquivo que dependa de uma leitura rápida será salvo no hdfs em outra pasta.
 ```
 
+## Estrutura de dados dentro do HDFS (Backup)
 ```
 /home/funds_bkp/2023
 ├── 01
