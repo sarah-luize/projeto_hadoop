@@ -4,7 +4,7 @@
 
 Daniel Udala - RM348932
 
-Sara Luize - RM348391
+Sarah Luize - RM348391
 
 Giancarlo Lester - RM348315
 
@@ -13,7 +13,7 @@ Vinicius Mesel - RM348353
 
 ## Dataset - CVM Fundos
 
-Esse projeto contempla o dataset da CVM, o [Fundos de Investimento: Documentos: Informe Diário](https://dados.cvm.gov.br/dataset/fi-doc-inf_diario). Este é um dataset que reporta dados de cotações de fundos diariamente na CVM, o arquivo em si é mensal porém a frequência de atualização é diária.
+O seguinte projeto contempla o dataset da Comissão de Valores Mobiliários (CVM), o [Fundos de Investimento: Documentos: Informe Diário](https://dados.cvm.gov.br/dataset/fi-doc-inf_diario). Este é um dataset que reporta dados de cotações de fundos diariamente na CVM, o arquivo em si é mensal porém a frequência de atualização é diária.
 
 **Segundo a CVM**: O INFORME DIÁRIO é um demonstrativo que contém as seguintes informações do fundo, relativas à data de competência:
 
@@ -24,19 +24,19 @@ Esse projeto contempla o dataset da CVM, o [Fundos de Investimento: Documentos: 
  - Resgates pagos no dia;
  - Número de cotistas
 
-Os arquivos são disponibilizados no formato ZIP e salvos nos mesmos diretórios abertos publicos.
+Os arquivos são disponibilizados no formato ZIP e salvos nos mesmos diretórios abertos públicos.
 
-## Por que do dataset?
+## Por que o dataset CVM?
 
-Escolhemos este dataset por termos interesse na área de investimentos e sermos investidores de alguns fundos de investimentos.
+A escolha do dataset fora baseada no interesse dos integrantes do grupo pela área de investimentos e por já atuarem com fundos de investimentos atualmente.
 
 ## Formato do dataset
 
-O dataset é disponibilizado em um diretório HTTP no site de dados abertos da CVM. Cada um dos arquivos disponibilizados está no formato ZIP e dentro deste ZIP está um CSV com os dados disponibilizados pelas gestoras de investimento.
+O dataset é disponibilizado em um diretório HTTP no site de dados aberto da CVM. Cada um dos arquivos disponibilizados está no formato ZIP e dentro deste arquivo ZIP está contido o CSV com os dados disponibilizados pelas gestoras de investimento.
 
 ## Estrutura de dados dentro do HDFS
 
-A estrutura de diretórios e de dados escolhida para o HDFS é baseada em data do arquivo, seguindo em ano e mês. Então a estrutura de arquivos ficaria:
+A estrutura de diretórios e de dados escolhida para o HDFS é baseada em datas do arquivo, seguindo a organização em ano e mês. Diante desta premissa, a estrutura de arquivos apresentada seria:
 
 ```
 /home/funds/2023
@@ -78,7 +78,7 @@ python3 /src/download_dataset.py # Rodar diariamente para baixar os dados
 
 ### Estratégia de Backup
 
-O Backup é realizado diariamente, porem salvando os dados em seu formato bruto `.zip` para ser possivel recuperar o arquivo no momento em que isso for necessário e ao mesmo tempo por não ser um arquivo que dependa de uma leitura rápida será salvo no hdfs em outra pasta.
+O Backup dos dados é realizado diariamente e os dados são salvos em formato ZIP, para que seja possível recuperar o arquivo no momento em que se julgar necessário. Outro ponto a ser levado em consideração que a leitura dos dados não será tão rápida, o arquivo será salvo em uma pasta secundária no HDFS. Tais ações geram economia de espaço e facilidade de acesso aos arquivos de backup diário da informação.
 
 ## Estrutura de dados dentro do HDFS (Backup)
 ```
