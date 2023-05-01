@@ -78,9 +78,7 @@ python3 /src/download_dataset.py # Rodar diariamente para baixar os dados
 
 ### Estratégia de Backup
 
-```
 O Backup é realizado diariamente, porem salvando os dados em seu formato bruto `.zip` para ser possivel recuperar o arquivo no momento em que isso for necessário e ao mesmo tempo por não ser um arquivo que dependa de uma leitura rápida será salvo no hdfs em outra pasta.
-```
 
 ## Estrutura de dados dentro do HDFS (Backup)
 ```
